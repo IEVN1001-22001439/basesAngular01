@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'basesAngular01';
+  title = 'Victor Hugo Amador';
+
+  duplicarNumero(valor:number):number{
+    return valor*2;
+  }
+
+  pelicula={
+    titulo:"Pierrot le fou",
+    anio:1965,
+    genero:"Drama/Crimen"
+  }
 }
