@@ -1,0 +1,45 @@
+<div class="col-12">
+    <div class="col-6">
+        <div class="mb-3">
+            <form>
+                <div class="form-group pt-4">
+                    <label for="nom">Nombre:</label>
+                    <input [(ngModel)]="nom" name="nom" type="text" class="form-control" id="nom"
+                        placeholder="Ingrese un nombre" />
+                </div>
+
+                <div class="form-group pt-4">
+                    <label for="cantComp">Cantidad compradores:</label>
+                    <input [(ngModel)]="cantComp" name="cantComp" type="number" class="form-control" id="cantComp"
+                        placeholder="Cantidad compradores" />
+                </div>
+
+                <label for="tarjetaCineco">Tarjeta Cineco</label>
+                <div class="form-check">
+                    <input [(ngModel)]="tarjetaCineco" class="form-check-input" type="radio" name="tarjetaCineco"
+                        id="si" value="si">
+                    <label class="form-check-label" for="si">Si</label>
+                </div>
+
+                <div class="form-check">
+                    <input [(ngModel)]="tarjetaCineco" class="form-check-input" type="radio" name="tarjetaCineco"
+                        id="no" value="no" checked>
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+
+                <div class="form-group pt-4">
+                    <label for="cantBol">Cantidad De Boletos:</label>
+                    <input [(ngModel)]="cantBol" name="cantBol" type="number" class="form-control" id="cantBol"
+                        placeholder="Máximo 7 boletos por comprador" />
+                </div>
+
+                <button (click)="procesar()" type="button" class="btn btn-primary mt-3">Procesar</button>
+                <button type="button" class="btn btn-secondary mt-3">Salir</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <h3>Resultado: {{ totalFinal }}</h3>
+    </div>
+</div>
