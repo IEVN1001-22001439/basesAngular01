@@ -1,1 +1,120 @@
-<p>resistencias works!</p>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Calculadora de Resistencias</h2>
+
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <h5>Banda 1</h5>
+            <div *ngFor="let color of bandas; let i = index" class="mb-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" [id]="'banda1-' + i" name="banda1" [value]="i"
+                        [checked]="banda1Seleccionada === i" (change)="onBandaChange(1, i)">
+                    <label class="form-check-label" [for]="'banda1-' + i">
+                        <span [style.color]="color.color">{{color.nombre}}</span> ({{color.valor}})
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <h5>Banda 2</h5>
+            <div *ngFor="let color of bandas; let i = index" class="mb-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" [id]="'banda2-' + i" name="banda2" [value]="i"
+                        [checked]="banda2Seleccionada === i" (change)="onBandaChange(2, i)">
+                    <label class="form-check-label" [for]="'banda2-' + i">
+                        <span [style.color]="color.color">{{color.nombre}}</span> ({{color.valor}})
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <h5>Banda 3 - Multiplicador</h5>
+            <div *ngFor="let color of multiplicadores; let i = index" class="mb-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" [id]="'banda3-' + i" name="banda3" [value]="i"
+                        [checked]="banda3Seleccionada === i" (change)="onBanda3Change(i)">
+                    <label class="form-check-label" [for]="'banda3-' + i">
+                        <span [style.color]="color.color">{{color.nombre}}</span> ({{color.valor}})
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <h5>Tolerancia</h5>
+            <div *ngFor="let color of tolerancias; let i = index" class="mb-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" [id]="'banda4-' + i" name="banda4" [value]="i"
+                        [checked]="banda4Seleccionada === i" (change)="onBanda4Change(i)">
+                    <label class="form-check-label" [for]="'banda4-' + i">
+                        <span [style.color]="color.color">{{color.nombre}}</span> ({{color.valor}})
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="resultado" class="mt-4 p-3 border rounded bg-light">
+        <h4 class="text-center mb-3">Resultado</h4>
+
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="table-secondary">
+                    <tr>
+                        <th>Banda 1</th>
+                        <th>Banda 2</th>
+                        <th>Banda 3</th>
+                        <th>Tolerancia</th>
+                        <th>Valor</th>
+                        <th>Valor Mínimo</th>
+                        <th>Valor Máximo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="p-0">
+                            <div class="p-3 fw-bold" [style.background-color]="resultado.colores[0]"
+                                [style.color]="banda1Seleccionada <= 1 ? 'white' : 'black'">
+                                {{bandas[banda1Seleccionada].valor}}
+                            </div>
+                        </td>
+
+                        <td class="p-0">
+                            <div class="p-3 fw-bold" [style.background-color]="resultado.colores[1]"
+                                [style.color]="banda2Seleccionada <= 1 ? 'white' : 'black'">
+                                {{bandas[banda2Seleccionada].valor}}
+                            </div>
+                        </td>
+
+                        <td class="p-0">
+                            <div class="p-3 fw-bold" [style.background-color]="resultado.colores[2]"
+                                [style.color]="banda3Seleccionada <= 1 ? 'white' : 'black'">
+                                {{multiplicadores[banda3Seleccionada].valor}}
+                            </div>
+                        </td>
+
+                        <td class="p-0">
+                            <div class="p-3 fw-bold" [style.background-color]="resultado.colores[3]"
+                                [style.color]="'black'">
+                                {{tolerancias[banda4Seleccionada].valor}}
+                            </div>
+                        </td>
+
+                        <td class="align-middle">
+                            <span class="fs-5 text-primary fw-bold">{{resultado.valor}}</span>
+                        </td>
+
+                        <td class="align-middle">
+                            <span class="fs-6 text-info fw-bold">{{resultado.valorMinimo}}</span>
+                        </td>
+
+                        <td class="align-middle">
+                            <span class="fs-6 text-info fw-bold">{{resultado.valorMaximo}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
